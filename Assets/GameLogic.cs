@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class GameLogic : MonoBehaviour
 {
-    // public PlayerController playerController;
+    public PlayerController playerController;
     // public BulletManager bulletManager; 
     // public GameObject winUI;
     // public GameObject failureUI;
     public Text winText;
     public Text failureText;
     public ExitDoor exitDoor;
-    private bool hasWon = false; 
+    private bool hasWon = false;
 
 
     void Start()
@@ -24,21 +24,22 @@ public class GameLogic : MonoBehaviour
     {
         if (!hasWon)
         {
-            CheckGameStatus();
+            // CheckGameStatus();
+            Debug.Log("GameLogic Update");
         }
     }
 
-    private void CheckGameStatus()
-    {
-        if (exitDoor.IsPlayerInRange() && bulletManager.bulletCount > 0)
-        {
-            WinGame();
-        }
-        else if (bulletManager.bulletCount == 0 || GameData.Instance.DidPlayerShootFriend)
-        {
-            LoseGame();
-        }
-    }
+    // private void CheckGameStatus()
+    // {
+    //     if (exitDoor.IsPlayerInRange() && bulletManager.bulletCount > 0)
+    //     {
+    //         WinGame();
+    //     }
+    //     // else if (bulletManager.bulletCount == 0 || GameData.Instance.DidPlayerShootFriend)
+    //     // {
+    //     //     LoseGame();
+    //     // }
+    // }
 
     public void WinGame()
     {
@@ -50,8 +51,8 @@ public class GameLogic : MonoBehaviour
     public void LoseGame()
     {
         failureText.gameObject.SetActive(true);
-        Time.timeScale = 0; 
-        playerController.DisableControl();
+        Time.timeScale = 0;
+        // playerController.DisableControl();
         Debug.Log("Game Over!");
     }
 
@@ -61,10 +62,10 @@ public class GameLogic : MonoBehaviour
         Time.timeScale = 1;
         winText.gameObject.SetActive(false);
         failureText.gameObject.SetActive(false);
-        playerController.EnableControl();
-        bulletManager.ResetBullets();
+        // playerController.EnableControl();
+        // bulletManager.ResetBullets();
         hasWon = false;
-        GameData.Instance.ResetData();
+        // GameData.Instance.ResetData();
     }
 
 }
@@ -72,7 +73,7 @@ public class GameLogic : MonoBehaviour
 public class GameData
 {
     public static GameData Instance = new GameData();
-    public static GameData Instance => instance ??= new GameData();
+    // public static GameData Instance => instance ??= new GameData();
 
     private bool didPlayerShootFriend;
     public bool DidPlayerShootFriend

@@ -19,7 +19,7 @@ public class ExitDoor : MonoBehaviour
         {
             if (gameLogic != null)
             {
-                gameLogic.GameOver();
+                // gameLogic.GameOver();
             }
         }
     }
