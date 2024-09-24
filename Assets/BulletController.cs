@@ -5,6 +5,24 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
+    public class PlayerController : MonoBehaviour
+    {
+        private Vector2 lastDirection;
+
+        // Receive direction from the BulletController
+        public void ReceiveDirection(Vector2 direction)
+        {
+            lastDirection = direction;
+            HandleDirectionChange();
+        }
+
+        void HandleDirectionChange()
+        {
+            float angle = Mathf.Atan2(lastDirection.y, lastDirection.x) * Mathf.Rad2Deg - 90f;
+
+            Debug.Log("Player shooting direction: " + lastDirection);
+        }
+    }
     // Reference to the bullet prefab
     public GameObject bulletPrefab;
 
@@ -15,7 +33,7 @@ public class BulletController : MonoBehaviour
     private int bulletCount = 0;
 
     // Reference to the player's controller
-    public PlayerController playerController;
+    private PlayerController playerController;
 
     void Update()
     {
@@ -43,7 +61,8 @@ public class BulletController : MonoBehaviour
         Vector2 direction = (mousePosition - playerPosition).normalized;
 
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        if (rb != null){
+        if (rb != null)
+        {
             rb.velocity = direction * bulletSpeed;
         }
 

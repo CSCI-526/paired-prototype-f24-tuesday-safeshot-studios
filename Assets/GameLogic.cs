@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameLogic : MonoBehaviour
 {
-    public PlayerController playerController;
+    // public PlayerController playerController;
     // public BulletManager bulletManager; 
     // public GameObject winUI;
     // public GameObject failureUI;
