@@ -8,6 +8,11 @@ using UnityEngine.UI;
 public class BulletCollision : MonoBehaviour
 {
     public GameObject losingText;
+    private static bool gameOver = false;
+    public static bool isGameOver()
+    {
+        return gameOver;
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -15,7 +20,11 @@ public class BulletCollision : MonoBehaviour
         if (other.CompareTag("NPC"))
         {
             Debug.Log("Bullet collided with NPC");
-            Instantiate(losingText, new Vector3(0, 0, 0), Quaternion.identity);
+            if (!gameOver)
+            {
+                gameOver = true;
+                Instantiate(losingText, new Vector3(0, 0, 0), Quaternion.identity);
+            }
         }
         else
         {
