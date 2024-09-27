@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
+
+    
     public class PlayerController : MonoBehaviour
     {
         private Vector2 lastDirection;
