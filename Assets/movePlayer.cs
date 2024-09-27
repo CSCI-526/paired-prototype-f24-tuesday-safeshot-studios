@@ -20,7 +20,7 @@ public class movePlayer : MonoBehaviour
 
     public Transform gun;
 
-
+    public GameObject losingText;
     public float force = 5f;
 
     Vector2 playerPos;
@@ -29,6 +29,9 @@ public class movePlayer : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector3 direction;
+
+    private bool gameOver = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +43,27 @@ public class movePlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gameOver)
+        {
+            return;
+        }
+        if (BulletCollision.isGameOver())
+        {
+            Debug.Log("Game Over for bullet collision");
+            gameOver = true;
+        }
+        if (ExitDoor.isGameOver())
+        {
+            Debug.Log("Game Over for exit door");
+            gameOver = true;
+        }
+        
+        if (bulletCount >= bulletLimit && rb.velocity.magnitude == 0)
+        {
+            Debug.Log("Game Over as you have no bullets left");
+            gameOver = true;
+            Instantiate(losingText, new Vector3(0, 0, 0), Quaternion.identity);
+        }
         if (Input.GetMouseButtonDown(0))
         {
             if (bulletCount < bulletLimit)

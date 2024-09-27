@@ -6,6 +6,14 @@ public class ExitDoor : MonoBehaviour
 {
     private GameLogic gameLogic;
 
+    public GameObject winningText;
+
+    private static bool gameOver = false;
+    public static bool isGameOver()
+    {
+        return gameOver;
+    }
+
     private void Start()
     {
         gameLogic = FindObjectOfType<GameLogic>();
@@ -15,9 +23,10 @@ public class ExitDoor : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (gameLogic != null)
+            if (!gameOver)
             {
-                // gameLogic.GameOver();
+                gameOver = true;
+                Instantiate(winningText, new Vector3(0, 0, 0), Quaternion.identity);
             }
         }
     }
