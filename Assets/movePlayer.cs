@@ -32,6 +32,8 @@ public class movePlayer : MonoBehaviour
 
     private bool gameOver = false;
 
+    private float offsetDistance = 0.71f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -57,7 +59,7 @@ public class movePlayer : MonoBehaviour
             Debug.Log("Game Over for exit door");
             gameOver = true;
         }
-        
+
         if (bulletCount >= bulletLimit && rb.velocity.magnitude == 0)
         {
             Debug.Log("Game Over as you have no bullets left");
@@ -100,11 +102,15 @@ public class movePlayer : MonoBehaviour
         // Get the player's position (where the bullet will spawn)
         Vector3 playerPosition = transform.position;
 
-        // Instantiate the bullet at the player's position
-        GameObject bullet = Instantiate(bulletPrefab, playerPosition, Quaternion.identity);
-
         // Calculate the directionion
         Vector2 direction = (mousePosition - playerPosition).normalized;
+        Vector3 direction3 = new Vector3(direction.x, direction.y, 0);
+
+        Vector3 bulletSpawnPosition = playerPosition + direction3 * offsetDistance;
+
+
+        // Instantiate the bullet at the player's position
+        GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPosition, Quaternion.identity);
 
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         if (rb != null)

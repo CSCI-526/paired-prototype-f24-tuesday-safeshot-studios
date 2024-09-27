@@ -23,6 +23,7 @@ public class ExitDoor : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            Debug.Log("Player has reached the exit door!");
             if (!gameOver)
             {
                 gameOver = true;
