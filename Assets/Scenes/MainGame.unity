@@ -4144,7 +4144,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6480403673047062040, guid: 8a8afc12a199b1d4db3c7db63225fd18, type: 3}
   bulletSpeed: 10
   bulletCountText: {fileID: 1143219724}
-  bulletLimit: 100
+  bulletLimit: 30
   obj: {fileID: 2114338696}
   gun: {fileID: 2138096013}
   losingText: {fileID: 4335019609785693678, guid: d44ac3a66c30f40f490ace23691d94d5, type: 3}

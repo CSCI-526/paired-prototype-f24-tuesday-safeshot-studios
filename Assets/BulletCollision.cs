@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class BulletCollision : MonoBehaviour
 {
     public GameObject losingText;
-    private static bool gameOver = false;
+    public static bool gameOver = false;
     public static bool isGameOver()
     {
         return gameOver;

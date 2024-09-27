@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ExitDoor : MonoBehaviour
 {
-    private GameLogic gameLogic;
-
     public GameObject winningText;
 
     private static bool gameOver = false;
@@ -16,7 +14,7 @@ public class ExitDoor : MonoBehaviour
 
     private void Start()
     {
-        gameLogic = FindObjectOfType<GameLogic>();
+        gameOver=false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
