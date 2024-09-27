@@ -32,7 +32,7 @@ public class movePlayer : MonoBehaviour
 
     private bool gameOver = false;
 
-    private float offsetDistance = 0.71f;
+    private float offsetDistance = 0f;
 
 
     // Start is called before the first frame update
@@ -64,7 +64,7 @@ public class movePlayer : MonoBehaviour
         {
             Debug.Log("Game Over as you have no bullets left");
             gameOver = true;
-            Instantiate(losingText, new Vector3(0, 0, 0), Quaternion.identity);
+            Instantiate(losingText, new Vector3(0, 800, 0), Quaternion.identity);
         }
         if (Input.GetMouseButtonDown(0))
         {

@@ -26,6 +26,11 @@ public class BulletCollision : MonoBehaviour
                 Instantiate(losingText, new Vector3(0, 0, 0), Quaternion.identity);
             }
         }
+        else if (other.CompareTag("BreakableWall"))
+        {
+            Debug.Log("Bullet collided with Breakable Wall");
+            Destroy(other.gameObject);
+        }
         else
         {
             Debug.Log("Bullet collided with " + other.name);
