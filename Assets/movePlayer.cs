@@ -60,7 +60,11 @@ public class movePlayer : MonoBehaviour
             gameOver = true;
         }
 
-        if (bulletCount >= bulletLimit && rb.velocity.magnitude == 0)
+        // Debug.Log("Bullet count: " + bulletCount);
+        // Debug.Log("Velocity: " + rb.velocity.magnitude);
+        // as the velocity may be a very small number when standing on a dynamic rigidbody, set a low threshold to detect if the player is standing still
+        // may need to fix this in the future
+        if (bulletCount >= bulletLimit && rb.velocity.magnitude < 0.00001f)
         {
             Debug.Log("Game Over as you have no bullets left");
             gameOver = true;

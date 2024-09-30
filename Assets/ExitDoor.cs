@@ -22,7 +22,7 @@ public class ExitDoor : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Player has reached the exit door!");
-            if (!gameOver)
+            if (!gameOver && BulletCollision.isGameOver() == false)
             {
                 gameOver = true;
                 Instantiate(winningText, new Vector3(0, 0, 0), Quaternion.identity);
